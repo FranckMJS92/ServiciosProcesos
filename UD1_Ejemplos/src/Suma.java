@@ -1,5 +1,3 @@
-package UD1_Ejemplos;
-
 import java.util.Scanner;
 
 public class Suma {

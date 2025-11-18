@@ -1,5 +1,3 @@
-package UD1_Ejemplos;
-
 import java.io.IOException;
 import java.io.File;
 
@@ -8,10 +6,15 @@ public class Ejemplo2 {
     public static void main(String[] args) {
 
         ProcessBuilder pBuilder = new ProcessBuilder("java", "Suma");
+
+        // Definir directorio
         pBuilder.directory(new File("bin"));
+
+        // Redireccionar salidas
         pBuilder.redirectOutput(new File("salida.txt"));
         pBuilder.redirectError(new File("error.txt"));
 
+        // Redireccionar entrada **Scanner**
         File fichero = new File("entrada.txt");
 
         if (fichero.exists()) {
