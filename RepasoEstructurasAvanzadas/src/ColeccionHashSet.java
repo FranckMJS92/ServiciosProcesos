@@ -1,6 +1,6 @@
 import java.util.HashSet;
 
-public class Principal {
+public class ColeccionHashSet {
     public static void main(String[] args) {
         /*
          * HashSet ordena por hascode
@@ -14,9 +14,7 @@ public class Principal {
         nombres.add("Zapata");
         nombres.add("Zapata");
 
-        for (String s : nombres) {
-            System.out.println(s);
-        }
+        nombres.stream().forEach(System.out::println);
 
         // Ejemplo hashCode
         int hash = "Ana".hashCode();
