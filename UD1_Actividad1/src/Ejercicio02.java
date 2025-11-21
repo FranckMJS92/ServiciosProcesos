@@ -1,5 +1,3 @@
-package UD1_Actividad1;
-
 /*
  * EJERCICIO 2 – Escribe un programa que se ejecute desde Linux que: 
 

@@ -1,5 +1,3 @@
-package UD1_Actividad1;
-
 import java.io.IOException;
 
 /**
