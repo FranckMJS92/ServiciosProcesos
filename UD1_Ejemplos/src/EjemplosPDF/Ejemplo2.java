@@ -1,6 +1,13 @@
+/*
+*   Ejemplo 2: lanzar un proceso. Con el método waitFor mantiene nuestro programa en
+*   ejecución en espera de que el proceso se cierre
+ */
+
+package EjemplosPDF;
+
 import java.io.IOException;
 
-public class Ejemplo3 {
+public class Ejemplo2 {
     public static void main(String[] args) {
         try {
             ProcessBuilder proceso = new ProcessBuilder("C:/Windows/notepad.exe");
@@ -17,5 +24,4 @@ public class Ejemplo3 {
             e.printStackTrace();
         }
     }
-
 }
