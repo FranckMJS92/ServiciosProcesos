@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Ejercicio03 {
     public static void main(String[] args) {
 
-        ProcessBuilder pBuilder = new ProcessBuilder("notepad");
+        ProcessBuilder pBuilder = new ProcessBuilder("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
 
         try {
             Process proceso = pBuilder.start();

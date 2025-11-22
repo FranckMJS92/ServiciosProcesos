@@ -15,15 +15,17 @@ import java.io.IOException;
 public class Ejercicio01 {
 
 	public static void main(String[] args) {
-
+		// args se configura en launch.json
 		if (args.length < 1) {
 			System.out.println("[ERROR] no se han pasado argumento al programa");
 			System.exit(1);
 		} else {
+			// Creamos el proceso
 			ProcessBuilder pBuilder = new ProcessBuilder(args);
 			try {
+				// Iniciamos el proceso
 				Process proceso = pBuilder.start();
-				// Esperemos a que el proceso termine
+				// Esperemos a que el proceso termine, waitfor() devuelve el exitValue
 				int codigo = proceso.waitFor();
 				System.out.println("Codigo de finalización " + codigo);
 				System.out.println("Comando Ejecutado: " + pBuilder.command());
