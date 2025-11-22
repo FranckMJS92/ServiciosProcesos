@@ -3,7 +3,7 @@
 *   El fichero prueba.txt lo buscara en D:/.
 */
 
-package EjemplosPDF;
+package EjemplosPDF1_3;
 
 import java.io.File;
 import java.io.IOException;

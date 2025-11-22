@@ -2,7 +2,7 @@
 *   Ejemplo 1: ejecutar la aplicación Notepad
  */
 
-package EjemplosPDF;
+package EjemplosPDF1_3;
 
 import java.io.IOException;
 

@@ -3,7 +3,7 @@
 *   ejecución en espera de que el proceso se cierre
  */
 
-package EjemplosPDF;
+package EjemplosPDF1_3;
 
 import java.io.IOException;
 
