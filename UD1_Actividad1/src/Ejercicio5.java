@@ -20,11 +20,10 @@ public class Ejercicio5 {
             // ProcessBuilder pb1 = new ProcessBuilder("C:\\Program
             // Files\\Google\\Chrome\\Application\\chrome.exe");
             ProcessBuilder pb = new ProcessBuilder();
-            Process p;
+            Process p = null;
             for (byte i = 0; i < comandos.size(); i++) {
                 pb = new ProcessBuilder(comandos.get(i));
                 p = pb.start();
-                p.waitFor();
             }
 
             /* ProcessBuilder pb1 = new ProcessBuilder("cmd");
@@ -38,6 +37,12 @@ public class Ejercicio5 {
             p1.waitFor();
             p2.waitFor();
             p3.waitFor(); */
+            int finished = p.waitFor();
+
+            if(finished == 0){
+                System.out.println("Proceso termino correctamente");
+            }
+            
             
         } catch (IOException | InterruptedException e) {
             System.err.println("Error en la ejecucion");
