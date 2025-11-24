@@ -9,7 +9,7 @@ EJERCICIO 5 – Escribe un programa que se ejecute desde Windows que:
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Ejercicio5 {
+public class Ejercicio05 {
     public static void main(String[] args) {
         ArrayList<String> comandos = new ArrayList<>();
         comandos.add("notepad");

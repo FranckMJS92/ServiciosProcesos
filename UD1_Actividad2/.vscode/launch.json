@@ -6,9 +6,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Ejercicio01",
+            "request": "launch",
+            "mainClass": "Ejercicio01",
+            "projectName": "UD1_Actividad2_9360be76"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}",
+            "mainClass": "${file}"
         }
     ]
 }
