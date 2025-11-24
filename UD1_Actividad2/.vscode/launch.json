@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Aleatorio",
+            "request": "launch",
+            "mainClass": "Aleatorio",
+            "projectName": "UD1_Actividad2_9360be76"
+        },
+        {
+            "type": "java",
             "name": "Ejercicio01",
             "request": "launch",
             "mainClass": "Ejercicio01",

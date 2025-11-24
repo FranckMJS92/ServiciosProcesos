@@ -1,8 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.text.DateFormatter;
-
 public class Triangulo {
     public static void main(String[] args) {
         // Obtener fecha y hora actual

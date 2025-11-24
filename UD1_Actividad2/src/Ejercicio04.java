@@ -11,8 +11,54 @@ Aleatorio: 6
 Generar aleatorio (N para finalizar): n 
  */
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 public class Ejercicio04 {
     public static void main(String[] args) {
-        
+        Scanner scan = new Scanner(System.in);
+        String text = "";
+
+        // Crear el proceso para ejecutar la clase Aleatorio
+        ProcessBuilder pb = new ProcessBuilder("java", "Aleatorio");
+
+        // Indicar directorio
+        pb.directory(new File("bin"));
+
+        // Bucle para ejecutor del proceso hasta stop por usuario
+        while (!text.equals("N")) {
+
+            System.out.print("Generar aleatorio ('N' para terminar) : ");
+            text = scan.next();
+
+            // Valida cadena antes de ejecutar proceso
+            if (text.equals("N"))
+                break;
+            else {
+                try {
+                    Process p = pb.start();
+
+                    InputStream is = p.getInputStream();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String linea;
+                    while ((linea = br.readLine()) != null) {
+                        System.out.println(linea);
+                    }
+                    br.close();
+                } catch (IOException e) {
+                    System.err.println("Error al ejecutar proceso");
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        System.out.println("Fin Programa");
+
+        scan.close();
     }
 }

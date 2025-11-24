@@ -4,7 +4,6 @@ obtenga el stream de entrada conectado con la salida de error del proceso y mué
 */
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
