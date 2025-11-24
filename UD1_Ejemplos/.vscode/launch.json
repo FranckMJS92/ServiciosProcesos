@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Ejemplo1",
+            "request": "launch",
+            "mainClass": "Ejemplo1",
+            "projectName": "UD1_Ejemplos_dd246d8e"
+        },
+        {
+            "type": "java",
+            "name": "ProcesoEscritor",
+            "request": "launch",
+            "mainClass": "ProcesoEscritor",
+            "projectName": "UD1_Ejemplos_dd246d8e",
+            "args": [
+                "mensaje para el mundo"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "ProcesoLanzador",
+            "request": "launch",
+            "mainClass": "ProcesoLanzador",
+            "projectName": "UD1_Ejemplos_dd246d8e"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
