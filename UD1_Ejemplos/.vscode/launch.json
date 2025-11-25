@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Lanzador2",
+            "request": "launch",
+            "mainClass": "Lanzador2",
+            "projectName": "UD1_Ejemplos_dd246d8e"
+        },
+        {
+            "type": "java",
+            "name": "ProcesoMensaje",
+            "request": "launch",
+            "mainClass": "ProcesoMensaje",
+            "projectName": "UD1_Ejemplos_dd246d8e"
+        },
+        {
+            "type": "java",
+            "name": "Lanzador1",
+            "request": "launch",
+            "mainClass": "Lanzador1",
+            "projectName": "UD1_Ejemplos_dd246d8e"
+        },
+        {
+            "type": "java",
+            "name": "Lanzador",
+            "request": "launch",
+            "mainClass": "Lanzador",
+            "projectName": "UD1_Ejemplos_dd246d8e"
+        },
+        {
+            "type": "java",
             "name": "Ejemplo1",
             "request": "launch",
             "mainClass": "Ejemplo1",
@@ -20,13 +48,6 @@
             "args": [
                 "mensaje para el mundo"
             ]
-        },
-        {
-            "type": "java",
-            "name": "ProcesoLanzador",
-            "request": "launch",
-            "mainClass": "ProcesoLanzador",
-            "projectName": "UD1_Ejemplos_dd246d8e"
         },
         {
             "type": "java",
