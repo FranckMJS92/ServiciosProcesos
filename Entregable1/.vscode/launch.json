@@ -23,7 +23,8 @@
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "${file}",
+            "args":["3","4","2","3"]
         }
     ]
 }
