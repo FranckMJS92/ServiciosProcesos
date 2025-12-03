@@ -1,61 +1,102 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Principal {
+
     public static void main(String[] args) {
-        int sumaFinal = 0;
-        // Instancia de ProcessBuilder para los procesos GeneradorNumeros
-        ProcessBuilder gen1 = new ProcessBuilder("java", "GeneradorNumeros", "8");
-        ProcessBuilder gen2 = new ProcessBuilder("java", "GeneradorNumeros", "5");
+
+        // ArrayList para procesos y archivos
+        List<Process> procesos = new ArrayList<>();
+        List<String> archivosGenerados = new ArrayList<>();
 
         try {
+            System.out.println("=== INICIANDO GENERACIÓN DE NÚMEROS ===");
 
-            // Asignar directory para GeneradorNumeros y la salida de fichero
-            gen1.directory(new File("bin"));
-            gen1.redirectOutput(new File("datos_gen1.txt"));
+            // Paso 1: Lanzar dos procesos GeneradorNumeros
+            for (int i = 0; i < 2; i++) {
+                ProcessBuilder pb = new ProcessBuilder("java", "GeneradorNumeros", "5");
 
-            gen2.directory(new File("bin"));
-            gen2.redirectOutput(new File("datos_gen2.txt"));
+                pb.directory(new File("bin"));
+                Process proceso = pb.start();
+                procesos.add(proceso);
 
-            // Process start para ambos procesos
-            Process pg1 = gen1.start();
-            Process pg2 = gen2.start();
-
-            // Instancia de ProcessBuilder para los procesos CalculadoraSubproceso
-            ProcessBuilder cal1 = new ProcessBuilder("java", "CalculadoraSubproceso", "datos_gen1.txt");
-            ProcessBuilder cal2 = new ProcessBuilder("java", "CalculadoraSubproceso", "datos_gen2.txt");
-
-            // Asignar directory para CalculadoraSubproceso
-            cal1.directory(new File("bin"));
-            cal2.directory(new File("bin"));
-
-            Process pc1 = cal1.start();
-            Process pc2 = cal2.start();
-
-            InputStream is1 = pc1.getInputStream();
-            InputStream is2 = pc2.getInputStream();
-
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(is1));
-            String linea = br1.readLine();
-            if (linea != null) {
-                sumaFinal += Integer.parseInt(linea);
-                System.out.println(linea);
+                // Leer la salida para obtener el nombre del archivo generado
+                try {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(proceso.getInputStream()));
+                    String linea;
+                    while ((linea = reader.readLine()) != null) {
+                        if (linea.contains("datos_") && linea.contains(".txt")) {
+                            // Extraer solo el nombre del archivo
+                            archivosGenerados.add(linea.substring(linea.lastIndexOf(" ") + 1));
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error en ejecucion");
+                }
             }
-            br1.close();
 
-            BufferedReader br2 = new BufferedReader(new InputStreamReader(is2));
-            if (linea != null) {
-                sumaFinal += Integer.parseInt(linea);
+            // Esperar a que terminen los generadores
+            System.out.println("Esperando a que terminen los procesos generadores...");
+            for (Process proceso : procesos) {
+                proceso.waitFor();
             }
-            br2.close();
 
-            System.out.println("La suma final es = " + sumaFinal);
+            System.out.println("Archivos generados: " + archivosGenerados);
+            procesos.clear(); 
 
-        } catch (IOException e) {
-            System.err.println("Error en la ejecucion del comando");
+            // Paso 2: Lanzar dos procesos CalculadoraSubproceso
+            System.out.println("\n=== CALCULANDO SUMAS ===");
+            List<Integer> sumas = new ArrayList<>();
+
+            for (String archivo : archivosGenerados) {
+                ProcessBuilder pb = new ProcessBuilder("java", "CalculadoraSubproceso", archivo);
+
+                pb.directory(new File("bin"));
+                Process proceso = pb.start();
+                procesos.add(proceso);
+
+                // Capturar la salida
+                try (BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(proceso.getInputStream()))) {
+
+                    String resultado = reader.readLine();
+                    if (resultado != null) {
+                        int suma = Integer.parseInt(resultado.trim());
+                        sumas.add(suma);
+                        System.out.println("Suma para " + archivo + ": " + suma);
+                    }
+                }
+
+                // Leer errores si los hay
+                try (BufferedReader errorReader = new BufferedReader(
+                        new InputStreamReader(proceso.getErrorStream()))) {
+
+                    String errorLine;
+                    while ((errorLine = errorReader.readLine()) != null) {
+                        System.err.println("Error del proceso: " + errorLine);
+                    }
+                }
+            }
+
+            // Esperar a que terminen los calculadores
+            for (Process proceso : procesos) {
+                proceso.waitFor();
+            }
+
+            // Paso 3: Calcular y mostrar resultado final
+            System.out.println("\n=== RESULTADO FINAL ===");
+            int sumaTotal = 0;
+            for (int suma : sumas) {
+                sumaTotal += suma;
+            }
+
+            System.out.println("Suma total de ambos archivos: " + sumaTotal);
+
+        } catch (Exception e) {
+            System.err.println("Error en la ejecución principal: " + e.getMessage());
             e.printStackTrace();
         }
     }

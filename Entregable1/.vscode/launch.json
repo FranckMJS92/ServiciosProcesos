@@ -4,12 +4,26 @@
     // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "type": "java",
+            "name": "Principal",
+            "request": "launch",
+            "mainClass": "Principal",
+            "projectName": "Entregable1_cf28386a"
+        },
+        {
+            "type": "java",
+            "name": "CalculadoraSubproceso",
+            "request": "launch",
+            "mainClass": "CalculadoraSubproceso",
+            "projectName": "Entregable1_cf28386a"
+        },
         {
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}",
-            "args" : ["datos_gen2.txt"]
+            "mainClass": "${file}"
         }
     ]
 }
