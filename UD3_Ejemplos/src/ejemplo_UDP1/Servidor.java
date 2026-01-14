@@ -5,7 +5,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketException;
 
 public class Servidor {
     public static void main(String[] args) {
@@ -21,17 +20,20 @@ public class Servidor {
             datagramSocket.receive(datagramaRecibido);
             String textoRecibo = new String(mensajeRecibido).trim();
 
-            // PAra enviar respuesta al ciente, necesito la direccion IP y el puerto
+            // Para enviar respuesta al ciente, necesito la direccion IP y el puerto
             // por el que el cliente ha enviado el mensaje
             InetAddress direccionCliente = datagramaRecibido.getAddress();
             int puertoCliente = datagramaRecibido.getPort();
 
             // Enviar datagrama
-            String textoEnviar = "Tamaño: " + textoRecibo;
+            String textoEnviar = "Tamaño : " + textoRecibo.length();
+            DatagramPacket datagramaEnviar = new DatagramPacket(textoEnviar.getBytes(), textoEnviar.length() + 1,
+                    direccionCliente,
+                    puertoCliente);
+            datagramSocket.send(datagramaEnviar);
 
-        } catch (SocketException e) {
-            System.out.println("ERROR al arrancar el servidor");
-            e.printStackTrace();
+            datagramSocket.close();
+
         } catch (IOException i) {
             System.out.println("ERROR al arrancar el servidor");
             i.printStackTrace();
