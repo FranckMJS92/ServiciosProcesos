@@ -11,10 +11,15 @@ import java.time.LocalDateTime;
 public class Servidor {
 
     private static String generarFecha() {
-        return null;
+        LocalDateTime actual = LocalDateTime.now();
+        int dia = actual.getDayOfMonth();
+        int mes = actual.getMonthValue();
+        int year = actual.getYear();
+        String respuesta = String.format("DIA ACTUAL: %02d-%02d-%02d", dia, mes, year);
+        return respuesta;
     }
 
-    private static String generarHoras() {
+    private static String generarHora() {
         LocalDateTime actual = LocalDateTime.now();
         int hora = actual.getHour();
         int minutos = actual.getMinute();
@@ -51,8 +56,14 @@ public class Servidor {
             System.out.println("PETICION RECIBIDA: " + texto);
 
             // Si es un "1" -> Hora
-
-            // Si es un "2" -> Fecha
+            if (texto.equals("1")) {
+                salida.write(generarHora().getBytes());
+                // Si es un "2" -> Fecha
+            } else if (texto.equals("2")) {
+                salida.write(generarFecha().getBytes());
+            } else {
+                System.out.println("PETICION INCORRECTA".getBytes());
+            }
 
             // Enviamos respuesta al cliente
             String respuesta = "Tamaño: " + texto.length();

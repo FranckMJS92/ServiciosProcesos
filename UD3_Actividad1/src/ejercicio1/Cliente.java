@@ -17,23 +17,23 @@ public class Cliente {
             InetSocketAddress direccionServidor = new InetSocketAddress("localhost", 2000);
 
             cliente.connect(direccionServidor);
-            System.out.println("CONECTADOS AL SERVIDOR");
+            System.out.println("CONECTADO AL SERVIDOR");
 
             // Obtenemos los streams del socket para poder enviar y recibir informacion
             InputStream entrada = cliente.getInputStream();
             OutputStream salida = cliente.getOutputStream();
 
-            System.out.println("Dime una frase");
+            System.out.println("Opcion [1-HORA | 2-FECHA]");
             String texto = scan.nextLine();
 
             // Envia mensaje al servidor
             salida.write(texto.getBytes());
 
             // Recibe mensaje del servidor
-            byte[] respuesta = new byte[100];
-            entrada.read(respuesta);
+            byte[] mensaje = new byte[100];
+            entrada.read(mensaje);
 
-            String rpta = new String(respuesta).trim();
+            String rpta = new String(mensaje).trim();
             System.out.println("PETICION RECIBIDA: " + rpta);
 
             // Cuando terminemos la comunicacioon, cerramos TODO
@@ -47,7 +47,6 @@ public class Cliente {
         }
 
         scan.close();
-
 
     }
 }
