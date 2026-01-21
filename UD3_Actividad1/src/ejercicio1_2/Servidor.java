@@ -1,4 +1,4 @@
-package ejercicio1;
+package ejercicio1_2;
 
 import java.io.IOException;
 import java.io.InputStream;
