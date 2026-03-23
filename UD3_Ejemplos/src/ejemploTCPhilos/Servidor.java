@@ -31,7 +31,6 @@ public class Servidor {
                 new HiloCliente(socketCliente, personas);
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

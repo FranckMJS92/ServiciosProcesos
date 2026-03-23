@@ -60,6 +60,7 @@ public class Cliente {
 						// MOSTRAR_TODOS
 						outOb.writeObject("MOSTRAR_TODOS");
 						// Recibimos del servidor el arraylist
+						@SuppressWarnings("unchecked")
 						ArrayList<Persona> personas = (ArrayList<Persona>) inOb.readObject();
 						for (Persona p : personas) {
 							System.out.println(p);
@@ -87,6 +88,7 @@ public class Cliente {
 					case 5:
 						outOb.writeObject("MAYORES_EDAD");
 						// Recibimos del servidor el arraylist
+						@SuppressWarnings("unchecked")
 						ArrayList<Persona> mayores = (ArrayList<Persona>) inOb.readObject();
 						if (mayores.isEmpty()) {
 							System.out.println("No hay personas mayores de edad");
@@ -105,6 +107,8 @@ public class Cliente {
 
 			} while (opcion != 6);
 
+			socket.close();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,5 +116,6 @@ public class Cliente {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		scan.close();
 	}
 }
