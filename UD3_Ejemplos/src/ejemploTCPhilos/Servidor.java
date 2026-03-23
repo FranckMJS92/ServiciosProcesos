@@ -30,6 +30,7 @@ public class Servidor {
                 // Para que se puedan ejecutar simultaneamente, creamos el hilo
                 new HiloCliente(socketCliente, personas);
             }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
