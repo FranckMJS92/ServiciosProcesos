@@ -15,7 +15,7 @@ public class Servidor {
         int dia = actual.getDayOfMonth();
         int mes = actual.getMonthValue();
         int year = actual.getYear();
-        String respuesta = String.format("DIA ACTUAL: %02d-%02d-%02d", dia, mes, year);
+        String respuesta = String.format("DIA ACTUAL: %02d-%02d-%04d", dia, mes, year);
         return respuesta;
     }
 
@@ -79,6 +79,5 @@ public class Servidor {
             System.out.println("[ERROR] Al iniciar servidor");
             e.printStackTrace();
         }
-
     }
 }
