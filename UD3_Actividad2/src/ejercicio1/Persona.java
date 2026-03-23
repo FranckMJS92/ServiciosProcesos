@@ -31,4 +31,7 @@ public class Persona implements Serializable {
         return id;
     }
 
+    public int getEdad() {
+        return edad;
+    }
 }
