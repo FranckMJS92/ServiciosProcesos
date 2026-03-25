@@ -69,7 +69,7 @@ public class Utilidades {
                 System.out.print(mensaje);
                 num = Double.parseDouble(scan.nextLine());
                 if (num < 0) {
-                    System.out.println("[ERROR] Número incorrrecto");
+                    System.out.println("[ERROR] Número incorrecto");
                     error = true;
                 }
             } catch (Exception e) {
@@ -101,7 +101,7 @@ public class Utilidades {
                 System.out.print(mensaje);
                 num = Integer.parseInt(scan.nextLine());
             } catch (Exception e) {
-                System.out.println("[ERROR] Número incorrrecto");
+                System.out.println("[ERROR] Número incorrecto");
                 error = true;
             }
 
