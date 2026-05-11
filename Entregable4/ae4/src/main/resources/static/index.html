@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos - EcoMerch</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <h1>GESTIÓN DE PRODUCTOS - EcoMerch S.A.</h1>
+
+    <!-- Formulario para crear/actualizar productos -->
+    <div>
+        <h2>Nuevo Producto</h2>
+        <input type="text" id="name" placeholder="Nombre del producto">
+        <input type="number" id="price" placeholder="Precio" step="0.01">
+        <input type="number" id="stock" placeholder="Stock">
+
+        <!-- Selector de categorias -->
+        <select id="categoryId">
+            <option value="">Seleccione una categoría</option>
+        </select>
+
+        <button onclick="saveProduct()">Guardar</button>
+        <button onclick="clearForm()">Limpiar</button>
+        <button onclick="cancelEdit()">Cancelar Edición</button>
+    </div>
+
+    <!-- Mostrar mensaje de exito o error -->
+    <div id="message"></div>
+
+    <!-- Tabla para mostrar los productos -->
+    <h2>Listado de Productos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio (€)</th>
+                <th>Stock</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="productTable">
+            <!-- Aqui se agregarán los productos dinamicamente -->
+        </tbody>
+    </table>
+
+    <script src="javascript.js"></script>
+</body>
+
+</html>
