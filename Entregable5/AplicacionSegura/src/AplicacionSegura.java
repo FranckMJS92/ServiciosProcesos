@@ -236,7 +236,7 @@ public class AplicacionSegura {
 
         // Leer el hash actual y escribir con el nuevo rol
         try (BufferedReader reader = new BufferedReader(new FileReader(fichero))) {
-            reader.readLine(); // rol antiguo (lo ignoramos)
+            reader.readLine(); // rol antiguo
             String hash = reader.readLine();
 
             try (PrintWriter writer = new PrintWriter(fichero)) {
